@@ -1,0 +1,284 @@
+Name: Alarms
+Type: AlarmsCategoryFolder
+Children:
+- Name: DigitalAlarmWithUID
+  Id: g=d5371a2c404fa2b550f4c089374e689f
+  Supertype: OffNormalAlarmController
+  Children:
+  - Class: Reference
+    Target: ns=17;i=81
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=82
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=83
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=130
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=135
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=132
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=146
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=148
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=150
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=152
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=154
+    Direction: Forward
+  - Name: NormalStateValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: InputValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: LastEvent
+    Type: BaseDataVariableType
+    DataType: BaseDataType
+    ValueRank: OneDimension
+    ArrayDimensions: [0]
+  - Name: NodeId
+    Type: BaseDataVariableType
+    DataType: NodeId
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "..@NodeId"
+      Children:
+      - Name: Mode
+        Type: BaseVariableType
+        DataType: DynamicLinkMode
+        ModellingRule: Optional
+        Value: 2
+  - Class: Reference
+    Type: GeneratesEvent
+    Target: g=acef20a5e4d191e550b71bff34b12135
+  - Name: GUID
+    Type: BaseDataVariableType
+    DataType: String
+  - Class: Method
+    Name: InitGUID
+    Id: g=1ea7d542717759daf4418e4d5a115cb1
+- Name: DigitalAlarmWithUID1
+  Type: DigitalAlarmWithUID
+  Children:
+  - Class: Reference
+    Target: ns=17;i=81
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=82
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=83
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=130
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=135
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=132
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=146
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=148
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=150
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=152
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=154
+    Direction: Forward
+  - Name: NormalStateValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: InputValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: LastEvent
+    Type: BaseDataVariableType
+    DataType: BaseDataType
+    ValueRank: OneDimension
+    ArrayDimensions: [0]
+  - Name: NodeId
+    Type: BaseDataVariableType
+    DataType: NodeId
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "..@NodeId"
+  - Name: Message
+    Type: BaseDataVariableType
+    DataType: LocalizedText
+    Value: {"LocaleId":"en-US","Text":"Alarm 1"}
+  - Name: GUID
+    Type: BaseDataVariableType
+    DataType: String
+  - Class: Reference
+    Target: g=1ea7d542717759daf4418e4d5a115cb1
+    Direction: Forward
+- Name: DigitalAlarmWithUID2
+  Type: DigitalAlarmWithUID
+  Children:
+  - Class: Reference
+    Target: ns=17;i=81
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=82
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=83
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=130
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=135
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=132
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=146
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=148
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=150
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=152
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=154
+    Direction: Forward
+  - Name: NormalStateValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: InputValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: LastEvent
+    Type: BaseDataVariableType
+    DataType: BaseDataType
+    ValueRank: OneDimension
+    ArrayDimensions: [0]
+  - Name: NodeId
+    Type: BaseDataVariableType
+    DataType: NodeId
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "..@NodeId"
+  - Name: Message
+    Type: BaseDataVariableType
+    DataType: LocalizedText
+    Value: {"LocaleId":"en-US","Text":"Alarm 2"}
+  - Name: AutoAcknowledge
+    Type: BaseDataVariableType
+    DataType: Boolean
+  - Name: GUID
+    Type: BaseDataVariableType
+    DataType: String
+  - Class: Reference
+    Target: g=1ea7d542717759daf4418e4d5a115cb1
+    Direction: Forward
+  - Name: AutoConfirm
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+- Name: DigitalAlarmWithUID3
+  Type: DigitalAlarmWithUID
+  Children:
+  - Class: Reference
+    Target: ns=17;i=81
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=82
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=83
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=130
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=135
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=132
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=146
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=148
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=150
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=152
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=154
+    Direction: Forward
+  - Name: NormalStateValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: InputValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: LastEvent
+    Type: BaseDataVariableType
+    DataType: BaseDataType
+    ValueRank: OneDimension
+    ArrayDimensions: [0]
+  - Name: NodeId
+    Type: BaseDataVariableType
+    DataType: NodeId
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "..@NodeId"
+  - Name: Message
+    Type: BaseDataVariableType
+    DataType: LocalizedText
+    Value: {"LocaleId":"en-US","Text":"Alarm 3"}
+  - Name: AutoAcknowledge
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+  - Name: AutoConfirm
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+  - Name: GUID
+    Type: BaseDataVariableType
+    DataType: String
+  - Class: Reference
+    Target: g=1ea7d542717759daf4418e4d5a115cb1
+    Direction: Forward
