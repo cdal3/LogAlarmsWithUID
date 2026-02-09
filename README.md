@@ -23,6 +23,33 @@ The runtime MainWindow provides DigitalAlarmWithGUID1-3 and DigitalAlarm1 toggle
 ## Alarms / DigitalAlarmWithGUID (type)
 DigitalAlarmWithGUID is a FactoryTalk Optix Alarm based on the Digial Alarm supertype. A GUID (string) property has been added to hold the GUID at runtime and update everytime an alarm transitions to inactive. 
 DigitalAlarmWithGUID has a Custom Behavior to automatically initialize the GUID at the start of the Runtime, and holds an InitGUID() method that is exposed publicly if needed.
+```csharp
+[CustomBehavior]
+public class DigitalAlarmWithGUIDBehavior : BaseNetBehavior
+{
+    public override void Start()
+    {
+        // Insert code to be executed when the user-defined behavior is started
+
+        InitGUID();
+    }
+
+    public override void Stop()
+    {
+        // Insert code to be executed when the user-defined behavior is stopped
+    }
+
+    [ExportMethod]
+    public void InitGUID()
+    {
+        Node.GUID = Guid.NewGuid().ToString();
+    }
+
+#region Auto-generated code, do not edit!
+    protected new DigitalAlarmWithGUID Node => (DigitalAlarmWithGUID)base.Node;
+#endregion
+}
+```
 ## Loggers / AlarmsEventLogger1
 AlarmsEventLogger1 is a standard AlarmsEventLogger from the FactoryTalk Optix Library, but it has been modified with an additional column to log the GUID property of the DigitalAlarmWithGUID alarms.
 ## NetLogic / AlarmEventObserverLogic
@@ -32,3 +59,45 @@ AlarmEventObserverLogic registers and Event Observer of type UAManagedCore.OpcUa
 - ConfirmedState/Id = True
 
 ... indicating the end of that alarm's lifecycle. When this occurs, if the alarm is of type DigitalAlarmWithGUID, the GUID is updated to a new value.
+```csharp
+public class AlarmEventObserverLogic : BaseNetLogic, IUAEventObserver
+{
+    public override void Start()
+    {
+        var serverObject = LogicObject.Context.GetObject(OpcUa.Objects.Server);
+        // Register the observer to the server node to listen for events of type AlarmConditionType
+        eventRegistration = serverObject.RegisterUAEventObserver(this, UAManagedCore.OpcUa.ObjectTypes.AlarmConditionType);
+    }
+
+    public override void Stop()
+    {
+        // Insert code to be run when the user-defined logic is stopped
+    }
+
+    public void OnEvent(IUAObject eventNotifier, IUAObjectType eventType, IReadOnlyList<object> eventData, ulong senderId)
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.Append($"Event of type {eventType.BrowseName} triggered");
+
+        var eventArguments = eventType.EventArguments;
+        // Listen for AlarmConditionType events and check when they are deactivated (ActiveState = False, AckedState = True and ConfirmedState = True) to udpate the alarm GUID
+        if (eventArguments.GetFieldValue(eventData, "ActiveState/Id")?.ToString() == "False" &&
+            eventArguments.GetFieldValue(eventData, "AckedState/Id")?.ToString() == "True" &&
+            eventArguments.GetFieldValue(eventData, "ConfirmedState/Id")?.ToString() == "True")
+        {
+            Log.Info($"EventLogic {eventArguments.GetFieldValue(eventData, "ConditionId")?.ToString()} removed from Retained Alarms");
+            var alarm = InformationModel.Get<DigitalAlarmWithGUID>((NodeId)eventArguments.GetFieldValue(eventData, "ConditionId"));
+            if (alarm == null)
+            {
+                Log.Error($"DigitalAlarmWithUID with NodeId {eventArguments.GetFieldValue(eventData, "ConditionId")?.ToString()} not found in Information Model");
+                return;
+            }
+            var alarmGUID = alarm.GetVariable("GUID");
+            alarmGUID.Value = Guid.NewGuid().ToString();
+            Log.Info($"{alarm.BrowseName} new GUID: {alarmGUID.Value}");
+        }
+    }
+
+    private IEventRegistration eventRegistration;
+}
+```
