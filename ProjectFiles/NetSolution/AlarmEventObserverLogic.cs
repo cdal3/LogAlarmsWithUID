@@ -19,7 +19,7 @@ using FTOptix.SQLiteStore;
 using FTOptix.OPCUAServer;
 #endregion
 
-public class EventLogic : BaseNetLogic, IUAEventObserver
+public class AlarmEventObserverLogic : BaseNetLogic, IUAEventObserver
 {
     public override void Start()
     {
@@ -44,8 +44,13 @@ public class EventLogic : BaseNetLogic, IUAEventObserver
             eventArguments.GetFieldValue(eventData, "AckedState/Id")?.ToString() == "True" &&
             eventArguments.GetFieldValue(eventData, "ConfirmedState/Id")?.ToString() == "True")
         {
-            Log.Info($"EventLogic {eventArguments.GetFieldValue(eventData, "ConditionId")?.ToString()} Alarm Removed from Summary");
-            var alarm = InformationModel.Get<DigitalAlarmWithUID>((NodeId) eventArguments.GetFieldValue(eventData, "ConditionId"));
+            Log.Info($"EventLogic {eventArguments.GetFieldValue(eventData, "ConditionId")?.ToString()} removed from Retained Alarms");
+            var alarm = InformationModel.Get<DigitalAlarmWithGUID>((NodeId)eventArguments.GetFieldValue(eventData, "ConditionId"));
+            if (alarm == null)
+            {
+                Log.Error($"DigitalAlarmWithUID with NodeId {eventArguments.GetFieldValue(eventData, "ConditionId")?.ToString()} not found in Information Model");
+                return;
+            }
             var alarmGUID = alarm.GetVariable("GUID");
             alarmGUID.Value = Guid.NewGuid().ToString();
             Log.Info($"{alarm.BrowseName} new GUID: {alarmGUID.Value}");

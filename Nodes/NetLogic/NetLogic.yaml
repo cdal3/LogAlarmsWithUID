@@ -1,5 +1,5 @@
 Name: NetLogic
 Type: NetLogicCategoryFolder
 Children:
-- Name: EventLogic
+- Name: AlarmEventObserverLogic
   Type: NetLogic

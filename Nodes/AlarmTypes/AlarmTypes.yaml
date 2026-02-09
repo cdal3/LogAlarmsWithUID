@@ -1,10 +1,10 @@
 Name: AlarmTypes
 Type: FolderType
 Children:
-- Name: AlarmType_DigitalAlarmWithUID
+- Name: AlarmType_DigitalAlarmWithGUID
   Id: g=acef20a5e4d191e550b71bff34b12135
   Supertype: OffNormalAlarmType
-  DisplayName: {"LocaleId":"","Text":"DigitalAlarmWithUID"}
+  DisplayName: {"LocaleId":"","Text":"DigitalAlarmWithGUID"}
   Children:
   - Name: NormalState
     Type: PropertyType

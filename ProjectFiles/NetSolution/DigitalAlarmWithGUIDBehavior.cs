@@ -18,7 +18,7 @@ using FTOptix.OPCUAServer;
 #endregion
 
 [CustomBehavior]
-public class DigitalAlarmWithUIDBehavior : BaseNetBehavior
+public class DigitalAlarmWithGUIDBehavior : BaseNetBehavior
 {
     public override void Start()
     {
@@ -39,6 +39,6 @@ public class DigitalAlarmWithUIDBehavior : BaseNetBehavior
     }
 
 #region Auto-generated code, do not edit!
-    protected new DigitalAlarmWithUID Node => (DigitalAlarmWithUID)base.Node;
+    protected new DigitalAlarmWithGUID Node => (DigitalAlarmWithGUID)base.Node;
 #endregion
 }

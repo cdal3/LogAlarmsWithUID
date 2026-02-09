@@ -1,7 +1,7 @@
 Name: Alarms
 Type: AlarmsCategoryFolder
 Children:
-- Name: DigitalAlarmWithUID
+- Name: DigitalAlarmWithGUID
   Id: g=d5371a2c404fa2b550f4c089374e689f
   Supertype: OffNormalAlarmController
   Children:
@@ -73,7 +73,7 @@ Children:
     Name: InitGUID
     Id: g=1ea7d542717759daf4418e4d5a115cb1
 - Name: DigitalAlarmWithUID1
-  Type: DigitalAlarmWithUID
+  Type: DigitalAlarmWithGUID
   Children:
   - Class: Reference
     Target: ns=17;i=81
@@ -138,7 +138,7 @@ Children:
     Target: g=1ea7d542717759daf4418e4d5a115cb1
     Direction: Forward
 - Name: DigitalAlarmWithUID2
-  Type: DigitalAlarmWithUID
+  Type: DigitalAlarmWithGUID
   Children:
   - Class: Reference
     Target: ns=17;i=81
@@ -210,7 +210,7 @@ Children:
     DataType: Boolean
     Value: true
 - Name: DigitalAlarmWithUID3
-  Type: DigitalAlarmWithUID
+  Type: DigitalAlarmWithGUID
   Children:
   - Class: Reference
     Target: ns=17;i=81
@@ -281,4 +281,51 @@ Children:
     DataType: String
   - Class: Reference
     Target: g=1ea7d542717759daf4418e4d5a115cb1
+    Direction: Forward
+- Name: DigitalAlarm1
+  Type: OffNormalAlarmController
+  Children:
+  - Name: NormalStateValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: InputValue
+    Type: BaseDataVariableType
+    DataType: Double
+  - Name: LastEvent
+    Type: BaseDataVariableType
+    DataType: BaseDataType
+    ValueRank: OneDimension
+    ArrayDimensions: [0]
+  - Class: Reference
+    Target: ns=17;i=81
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=82
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=83
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=130
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=135
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=132
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=146
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=148
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=150
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=152
+    Direction: Forward
+  - Class: Reference
+    Target: ns=17;i=154
     Direction: Forward
