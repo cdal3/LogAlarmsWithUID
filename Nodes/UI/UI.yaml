@@ -1412,38 +1412,6 @@ Children:
               - Name: MethodsToCall
                 Type: BaseObjectType
                 Children:
-                - Name: MethodContainer2
-                  Type: BaseObjectType
-                  Children:
-                  - Name: ns=2;ObjectPointer
-                    Type: NodePointer
-                    DataType: NodeId
-                    Value: "/Objects/Commands/VariableCommands"
-                    Children:
-                    - Name: Kind
-                      Type: PropertyType
-                      DataType: NodeId
-                      Value: "/Types/ObjectTypes/BaseObjectType"
-                  - Name: ns=2;Method
-                    Type: BaseDataVariableType
-                    DataType: String
-                    Value: "Set"
-                  - Name: InputArguments
-                    Type: BaseObjectType
-                    Children:
-                    - Name: VariableToModify
-                      Type: BaseDataVariableType
-                      DataType: VariablePointer
-                      Description: {"NamespaceIndex":2,"TextId":"SetVariableToModifyDescription"}
-                    - Name: Value
-                      Type: BaseDataVariableType
-                      DataType: BaseDataType
-                      Description: {"NamespaceIndex":2,"TextId":"SetValueDescription"}
-                    - Name: ArrayIndex
-                      Type: BaseDataVariableType
-                      DataType: UInt32
-                      Description: {"NamespaceIndex":2,"TextId":"SetArrayIndexDescription"}
-                      ValueRank: ScalarOrOneDimension
                 - Name: MethodContainer1
                   Type: BaseObjectType
                   Children:
